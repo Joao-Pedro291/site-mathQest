@@ -593,3 +593,72 @@ button:hover {
   50% { transform: scale(1.05); }
 }
 
+.valor-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  height: 260px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  background: #111827;
+  cursor: pointer;
+}
+
+.valor-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.03);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.valor-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.95),
+    rgba(15, 23, 42, 0.8),
+    rgba(15, 23, 42, 0.2),
+    transparent
+  );
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.valor-texto {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #e5e7eb;
+  margin: 0 0 8px 0;
+}
+
+.valor-pill {
+  align-self: flex-start;
+  border-radius: 999px;
+  padding: 8px 18px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+.valor-card:hover .valor-card-bg {
+  transform: scale(1.08);
+  filter: brightness(0.45);
+}
+
+.valor-card:hover .valor-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
