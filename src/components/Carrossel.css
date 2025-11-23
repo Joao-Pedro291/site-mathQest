@@ -40,6 +40,7 @@
   gap: 10px;
   margin-top: 15px;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .slick-thumb li {
@@ -62,12 +63,12 @@
   border-color: #333;
 }
 
-
 .slick-dots.slick-default li button:before {
   color: #888;
   font-size: 12px;
 }
 
+/* Imagem quando usado no bloco .carrossel-equipe */
 .carrossel-equipe .img-grande {
   border-radius: 50%;
   width: 200px;
@@ -98,7 +99,7 @@
   text-align: center;
 }
 
-
+/* setas do carrossel */
 .carrossel-equipe .slick-prev:before,
 .carrossel-equipe .slick-next:before {
   color: #0a84b1 !important;
@@ -108,11 +109,11 @@
 .carousel-wrapper .slick-next:before {
   color: #0a84b1 !important;
 }
+
 .slider-wrapper-equipe {
   max-width: 1000px;
   margin: 0 auto;
 }
-
 
 .equipe-slide {
   display: flex !important;
@@ -120,6 +121,7 @@
   align-items: center;
 }
 
+/* CARD DA EQUIPE (DESKTOP) */
 .equipe-card {
   display: flex;
   background: white;
@@ -129,10 +131,9 @@
   align-items: center;
   gap: 100px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex-wrap: nowrap; /* sem quebra */
-  overflow-x: auto; /* evita overflow */
+  flex-wrap: nowrap;
+  overflow-x: auto; /* evita corte lateral em telas intermediárias */
 }
-
 
 /* Animação ao passar o mouse */
 .equipe-card:hover {
@@ -140,20 +141,18 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-
 .equipe-img {
   width: 180px;
   height: 180px;
   border-radius: 20px;
   object-fit: cover;
-    aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1;
   box-shadow: 0 4px 12px rgba(10, 132, 177, 0.5);
   border: 3px solid #0a84b1;
 }
 
 .equipe-info {
   text-align: left;
-  
 }
 
 .equipe-info h3 {
@@ -172,4 +171,80 @@
 .equipe-info .info {
   color: #444;
   font-style: italic;
+}
+
+/* ========================= */
+/*        RESPONSIVO         */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .slider-wrapper {
+    max-width: 100%;
+    margin: 24px auto;
+    padding: 0 16px;
+  }
+
+  .img-grande {
+    height: 220px;
+  }
+
+  .slick-thumb li {
+    width: 60px;
+    height: 45px;
+  }
+
+  .slider-wrapper-equipe {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  /* card da equipe empilhado no mobile */
+  .equipe-card {
+    flex-direction: column;
+    padding: 24px 20px;
+    gap: 20px;
+    overflow-x: visible;
+    text-align: center;
+  }
+
+  .equipe-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .equipe-info {
+    text-align: center;
+  }
+
+  .equipe-info h3 {
+    font-size: 18px;
+  }
+
+  .equipe-info .info {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .img-grande {
+    height: 200px;
+  }
+
+  .slick-thumb li {
+    width: 50px;
+    height: 38px;
+  }
+
+  .equipe-img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .equipe-info h3 {
+    font-size: 16px;
+  }
+
+  .equipe-info .info {
+    font-size: 0.85rem;
+  }
 }

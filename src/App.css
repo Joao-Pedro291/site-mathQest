@@ -2,14 +2,15 @@
   margin: 0 auto;
   text-align: center;
 }
-/* Rodapé superior    */
+
+/* NAVBAR */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   background-color: #1446A0;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* centraliza logo + menu no desktop */
   align-items: center;
   padding: 8px 40px;
   z-index: 1000;
@@ -29,15 +30,24 @@
   }
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  margin-right: 40px; /* espaço entre logo e menu no desktop */
+}
+
 .nav-left img.footer-logo {
   height: 40px;
 }
 
+/* LINKS NAV */
 .nav-links {
   display: flex;
   gap: 30px;
+  /* margin-left: auto;  removido pra não empurrar pra direita */
 }
-/* Buttons gerais    */
+
+/* BOTÕES GERAIS */
 .nav-links button {
   background: none;
   border: none;
@@ -52,6 +62,7 @@
 .nav-links button:hover {
   opacity: 0.8;
 }
+
 .btn-retro,
 button {
   font-family: 'Press Start 2P', cursive;
@@ -70,7 +81,25 @@ button:hover {
   box-shadow: 0 0 12px #0a84b1;
   transform: scale(1.07);
 }
-/* Downloads    */
+
+/* BOTÃO HAMBÚRGUER (MOBILE) */
+.nav-toggle {
+  all: unset;
+  display: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #ffffff;
+  margin: 4px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* DOWNLOAD CARD */
 .download-card {
   background: white;
   border-radius: 20px;
@@ -142,34 +171,7 @@ button:hover {
   transform: scale(1.07);
 }
 
-/* Ajustes para mobile */
-@media (max-width: 768px) {
-  .download-card {
-    flex-direction: column;
-    padding: 30px;
-    gap: 40px;
-  }
-
-  .download-card .info-wrapper,
-  .download-card .carousel-wrapper {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .download-card .info-wrapper h2 {
-    text-align: right;
-  }
-
-  .download-card .info-wrapper p {
-    text-align: center;
-  }
-
-  .download-card .download-btn {
-    margin: 0 auto;
-  }
-}
-
-/* Rodapé    */
+/* RODAPÉ */
 .rodape {
   background-color: #1446A0;
   display: flex;
@@ -191,7 +193,7 @@ button:hover {
 }
 
 .footer-text {
-  text-align: center;
+  text-align: left;
   font-family: Arial, sans-serif;
 }
 
@@ -205,12 +207,14 @@ button:hover {
   transform: scale(1.25) rotate(5deg);
   filter: brightness(1.3);
 }
-/* FUNDO ANIMADO  */
+
+/* FUNDO ANIMADO */
 .page-container {
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
   z-index: 1;
+  scroll-snap-type: y proximity;
 }
 
 .particles-bg {
@@ -228,7 +232,8 @@ button:hover {
   top: 0;
   left: 0;
 }
-/* Sobre  */
+
+/* SOBRE */
 .sobre-section {
   background: linear-gradient(135deg, #e0f7fa, #ffffff);
   padding: 60px 20px;
@@ -273,10 +278,10 @@ button:hover {
   animation-delay: 0.4s;
 }
 
-/* Carrosel equipe */
+/* CARROSSEL EQUIPE */
 .carrossel-equipe .carrossel-slide {
-  display: flex !important;      /* força flex */
-  flex-direction: row !important;/* força horizontal */
+  display: flex !important;
+  flex-direction: row !important;
   margin: 0 auto;
   background: white;
   border-radius: 20px;
@@ -298,7 +303,6 @@ button:hover {
 .carrossel-equipe .carrossel-slide:nth-child(4) { animation-delay: 0.8s; }
 .carrossel-equipe .carrossel-slide:nth-child(5) { animation-delay: 1s; }
 
-/* Efeito hover */
 .carrossel-equipe .carrossel-slide:hover {
   transform: translateY(-12px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
@@ -309,7 +313,7 @@ button:hover {
   width: 180px;
   height: 180px;
   object-fit: cover;
-  flex-shrink: 0;   
+  flex-shrink: 0;
   border-radius: 20px;
   border: 4px solid #0a84b1;
   box-shadow: 10px 10px 0px #d4f1ff;
@@ -321,7 +325,6 @@ button:hover {
   box-shadow: 0 20px 45px rgba(10, 132, 177, 0.45);
 }
 
-/* Texto ao lado da imagem */
 .carrossel-equipe .info {
   flex: 1;
   display: flex;
@@ -330,7 +333,6 @@ button:hover {
   justify-content: center;
 }
 
-/* Nome do integrante */
 .carrossel-equipe .info h3 {
   font-size: 22px;
   color: #0a84b1;
@@ -338,7 +340,6 @@ button:hover {
   font-weight: bold;
 }
 
-/* Cargo */
 .carrossel-equipe .info em {
   font-size: 16px;
   color: #555;
@@ -346,7 +347,6 @@ button:hover {
   margin-bottom: 12px;
 }
 
-/* Descrição */
 .carrossel-equipe .info p {
   font-size: 15px;
   color: #333;
@@ -354,14 +354,14 @@ button:hover {
   margin: 0;
 }
 
-/* Botões de navegação do carrossel */
+/* Botões carrossel */
 .carrossel-equipe .slick-prev,
 .carrossel-equipe .slick-next {
   width: 36px;
   height: 36px;
   background-color: #09a7e0 !important;
   border-radius: 50%;
-  opacity: 90% ;
+  opacity: 90%;
   z-index: 2;
 }
 
@@ -370,7 +370,8 @@ button:hover {
   color: white;
   font-size: 18px;
 }
-/* TItulos */
+
+/* TÍTULOS */
 .titulo-com-linha {
   position: relative;
   font-size: 28px;
@@ -378,9 +379,8 @@ button:hover {
   font-family: 'Press Start 2P', cursive;
   margin-bottom: 20px;
   text-align: center;
-    animation: fadeInUp 0.8s ease forwards;
+  animation: fadeInUp 0.8s ease forwards;
   opacity: 0;
-  
 }
 
 .titulo-com-linha::after {
@@ -391,7 +391,6 @@ button:hover {
   display: block;
   margin: 10px auto 0;
   border-radius: 4px;
-
 }
 
 @keyframes fadeInUp {
@@ -404,7 +403,8 @@ button:hover {
     transform: translateY(0);
   }
 }
-.subtitulo{
+
+.subtitulo {
   display: inline-block;
   font-family: 'Press Start 2P', cursive;
   font-size: 24px;
@@ -416,55 +416,50 @@ button:hover {
   transition: transform 0.3s ease;
   cursor: default;
 }
+
 .subtitulo span {
   display: inline-block;
   transition: transform 0.3s ease;
 }
+
 .subtitulo:hover span {
   animation: bounceLetter 0.6s ease-in-out forwards;
 }
+
 @keyframes bounceLetter {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-8px); }
   100% { transform: translateY(0); }
 }
+
 .subtitulo:hover {
   transform: translateY(-4px) scale(1.02);
   text-shadow: 2px 2px 6px #0a84b1, -1px -1px 4px #7dd3fc;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
-   letter-spacing: 1.5px;
+  letter-spacing: 1.5px;
   transform: scale(1.05);
-  
 }
 
 .titulo-equipe {
   width: 100%;
-
   font-family: 'Press Start 2P', cursive;
   color: #0a84b1;
   font-size: 24px;
   margin-bottom: 30px;
-
-}
-.titulo-com-linha:hover {
-  transform: translateY(-4px) scale(1.02);
-  text-shadow: 2px 2px 6px #0a84b1, -1px -1px 4px #7dd3fc;
-  transition: transform 0.3s ease, text-shadow 0.3s ease;
-   letter-spacing: 1.5px;
-  transform: scale(1.05);
 }
 
+.titulo-com-linha:hover,
 .titulo-equipe:hover {
   transform: translateY(-4px) scale(1.02);
   text-shadow: 2px 2px 6px #0a84b1, -1px -1px 4px #7dd3fc;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
-   letter-spacing: 1.5px;
+  letter-spacing: 1.5px;
   transform: scale(1.05);
 }
 
+/* TEXTO ANIMADO */
 .texto-animado {
   font-family: "JetBrains Mono", monospace;
-  
   overflow: hidden;
   display: inline-block;
   border-right: 2px solid #0a84b1;
@@ -479,11 +474,11 @@ button:hover {
     width: 100%;
   }
 }
+
 .texto-delay-1 { animation-delay: 0.2s; }
 .texto-delay-2 { animation-delay: 3.2s; }
 .texto-delay-3 { animation-delay: 6.4s; }
 
-/* Piscar do cursor */
 @keyframes blink {
   0%, 100% {
     border-color: transparent;
@@ -492,6 +487,7 @@ button:hover {
     border-color: #0a84b1;
   }
 }
+
 .fade-text {
   opacity: 0;
   transform: translateX(-20px);
@@ -516,8 +512,7 @@ button:hover {
   }
 }
 
-
-/* rodapé social*/
+/* RODAPÉ SOCIAL */
 .footer-social {
   display: flex;
   justify-content: center;
@@ -534,11 +529,6 @@ button:hover {
 .insta-icon:hover {
   transform: scale(1.2);
   filter: brightness(1.3);
-}
-
-.footer-text {
-  text-align: left;
-  font-family: 'Arial', sans-serif;
 }
 
 .footer-title {
@@ -570,7 +560,8 @@ button:hover {
   height: 20px;
   filter: brightness(1000%) contrast(120%);
 }
-/*animação sobre    */
+
+/* ANIMAÇÃO SOBRE */
 .hover-sobre {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -580,9 +571,7 @@ button:hover {
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
 }
 
-
-/* animação logo  */
-
+/* LOGO INICIAL */
 .logo-mathquest {
   animation: fadeInUp 1s ease forwards, pulse 4s ease-in-out infinite 1s;
   opacity: 0;
@@ -593,6 +582,7 @@ button:hover {
   50% { transform: scale(1.05); }
 }
 
+/* VALORES */
 .valor-card {
   position: relative;
   border-radius: 24px;
@@ -668,21 +658,196 @@ body {
   scroll-behavior: smooth;
 }
 
-/* dá uma sensação de “encaixe” quando passa de uma seção pra outra */
-.page-container {
-  scroll-snap-type: y proximity;
-}
-
-/* aplica o snap em cada bloco principal */
+/* SEÇÕES CHEIAS */
 .fullpage-section {
   scroll-snap-align: start;
   min-height: 100vh;
 }
 
-/* só deixa o divisor padrão bonitinho */
+/* DIVISOR */
 .divider {
   height: 2px;
   background: linear-gradient(to right, transparent, #ccc, transparent);
   width: 90%;
   margin: 0 auto;
+}
+
+/* ---------------------- */
+/*   RESPONSIVO MOBILE    */
+/* ---------------------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 8px 16px;
+    justify-content: space-between; /* no mobile: logo à esquerda e hambúrguer à direita */
+  }
+
+  .nav-left {
+    margin-right: 0;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  /* menu mobile fechado/aberto */
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #1446A0;
+    padding: 16px 24px 24px;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links button {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .inicio-section {
+    padding-top: 90px !important;
+  }
+
+  .logo-mathquest {
+    max-width: 80%;
+    height: auto !important;
+  }
+
+  .sobre-section {
+    padding: 40px 16px;
+  }
+
+  .sobre-content {
+    padding: 24px 16px;
+  }
+
+  .sobre-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .sobre-content p {
+    font-size: 0.9rem;
+  }
+
+  .carrossel-equipe {
+    padding: 24px 16px !important;
+  }
+
+  .carrossel-equipe .carrossel-slide {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .carrossel-equipe .img-grande {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 12px;
+  }
+
+  .carrossel-equipe .info {
+    text-align: center;
+  }
+
+  .download-card {
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 32px;
+  }
+
+  .download-card .info-wrapper,
+  .download-card .carousel-wrapper {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .download-card .info-wrapper h2 {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .download-card .info-wrapper p {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .download-card .download-btn {
+    margin: 0 auto;
+  }
+
+  .valores-section {
+    padding: 40px 16px 50px !important;
+  }
+
+  .valor-card {
+    max-width: 100%;
+    height: auto;
+    min-height: 220px;
+  }
+
+  .titulo-com-linha {
+    font-size: 20px;
+  }
+
+  .titulo-com-linha::after {
+    width: 70%;
+  }
+
+  .rodape {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .footer-text {
+    text-align: center;
+  }
+
+  .footer-email {
+    justify-content: center;
+  }
+
+  /* texto animado muito longo no mobile: simplifica */
+  .texto-animado {
+    display: block;
+    border-right: none;
+    animation: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 6px 12px;
+  }
+
+  .nav-left img.footer-logo {
+    height: 32px;
+  }
+
+  .titulo-equipe {
+    font-size: 18px;
+  }
+
+  .download-card {
+    padding: 24px 16px;
+  }
+
+  .sobre-content p {
+    font-size: 0.85rem;
+  }
 }

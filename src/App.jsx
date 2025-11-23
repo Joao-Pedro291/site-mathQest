@@ -33,6 +33,8 @@ import "./App.css";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const sobreRef = useRef(null);
   const equipeRef = useRef(null);
   const downloadRef = useRef(null);
@@ -46,7 +48,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // animação padrão para cada seção
   const sectionVariants = {
     hidden: { opacity: 0, y: 60 },
     visible: {
@@ -56,13 +57,18 @@ function App() {
     },
   };
 
-  // ---------- EQUIPE ----------
   const equipe = [
+    {
+      imagem: imgLynn,
+      nome: "Lynn",
+      descricao: "Gerência e Documentação",
+      info: "Gerencia o andamento geral do projeto e garante que toda a documentação esteja organizada e atualizada, como cronogramas, atas, requisitos e relatórios. Atua como ponto central de alinhamento entre a equipe, facilitando a comunicação e o cumprimento dos prazos.",
+    },
     {
       imagem: imgAllix,
       nome: "Allix",
       descricao: "Gerente e Designer",
-      info: "Responsável por coordenar a equipe, definir metas, acompanhar prazos e garantir a qualidade do projeto. Também contribui com o design geral e identidade visual da marca.",
+      info: "Desenvolve e refina a identidade visual do projeto, criando interfaces, layouts e materiais gráficos alinhados com a proposta do jogo. Garante consistência estética entre telas, personagens e materiais de divulgação, contribuindo para uma experiência mais imersiva e agradável ao usuário.",
     },
     {
       imagem: imgJp,
@@ -101,12 +107,6 @@ function App() {
       info: "Desenvolve elementos visuais como ilustrações, interfaces e assets gráficos. Cuida da estética do projeto com atenção aos detalhes e consistência visual.",
     },
     {
-      imagem: imgLynn,
-      nome: "Lynn",
-      descricao: "Documentação",
-      info: "Organiza e mantém atualizada toda a documentação do projeto, como guias técnicos, atas de reunião e registros de desenvolvimento. Essencial para o controle de processos e comunicação da equipe.",
-    },
-    {
       imagem: imgGm,
       nome: "Gustavo Martins",
       descricao: "Game Designer",
@@ -120,10 +120,12 @@ function App() {
     },
   ];
 
-  // ---------- DOWNLOAD ----------
-  const imagensDownload = [{ imagem: imgDownload1 }, { imagem: imgDownload2 }, { imagem: imgDownload3 }];
+  const imagensDownload = [
+    { imagem: imgDownload1 },
+    { imagem: imgDownload2 },
+    { imagem: imgDownload3 },
+  ];
 
-  // ---------- VALORES ----------
   const valores = [
     {
       id: 1,
@@ -148,10 +150,10 @@ function App() {
     },
   ];
 
-  // ---------- SCROLL ----------
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) section.scrollIntoView({ behavior: "smooth" });
+    setIsMobileMenuOpen(false);
   };
 
   if (loading) return <Preloader />;
@@ -169,7 +171,24 @@ function App() {
             className="footer-logo"
           />
         </div>
-        <div className="nav-links">
+
+        <button
+          className="nav-toggle"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label="Abrir/fechar menu"
+        >
+          <span
+            className={`nav-toggle-bar ${isMobileMenuOpen ? "open" : ""}`}
+          />
+          <span
+            className={`nav-toggle-bar ${isMobileMenuOpen ? "open" : ""}`}
+          />
+          <span
+            className={`nav-toggle-bar ${isMobileMenuOpen ? "open" : ""}`}
+          />
+        </button>
+
+        <div className={`nav-links ${isMobileMenuOpen ? "open" : ""}`}>
           <button onClick={() => scrollToSection("inicio")}>Inicio</button>
           <button onClick={() => scrollToSection("sobre")}>Sobre</button>
           <button onClick={() => scrollToSection("equipe")}>Equipe</button>
@@ -205,7 +224,6 @@ function App() {
         />
       </motion.section>
 
-      {/* DIVISOR */}
       <div className="divider" />
 
       {/* SOBRE */}
@@ -230,17 +248,23 @@ function App() {
         >
           <h2 className="titulo-com-linha">Sobre o Math Quest</h2>
           <p className="texto-animado texto-delay-1">
-            O <strong>Math Quest</strong> é muito mais do que um jogo — é uma
-            jornada interativa onde a matemática se encontra com a aventura.
-          </p>
-          <p className="fade-text delay-2">
-            Através de <strong>missões épicas</strong>,{" "}
-            <strong>personagens carismáticos</strong> e{" "}
-            <strong>problemas matemáticos</strong> que exigem raciocínio
-            lógico...
-          </p>
-          <p className="fade-text delay-3">
-            Criado por uma equipe apaixonada por educação e tecnologia...
+            Nosso projeto, Math Quest – feito por alunos da ETEC Jaraguá, é um
+            jogo que visa reforçar os conhecimentos matemáticos prévios do
+            jogador e tornar a visão que os jogadores possuem sobre a matemática
+            mais lúdica e abrangente. Durante a jogatina, o jogador vai encarar
+            diversas batalhas, durante esses confrontos o jogador deverá
+            preencher contas matemáticas com lacunas para causar dano aos
+            inimigos e resolver contas para se defender dos inimigos, não só
+            isso, o jogador também vai conhecer diversos polímatas famosos e
+            importantes durante o desenvolvimento da história do jogo. Com nosso
+            projeto, buscamos atenuar as dificuldades dos jogadores com a lógica
+            matemática e fornecer uma forma divertida de aprendizado, por isso,
+            estamos disponibilizando uma versão gratuita do jogo (indicada para
+            quem quer se entreter) e uma versão educativa (indicada para quem
+            quer treinar seus conhecimentos matemáticos). Nosso foco são os
+            alunos do ensino médio. Buscamos atenuar as dificuldades dos nossos
+            usuários em 11% em um prazo médio de jogatina, chegamos nessa
+            conclusão com as visitas técnicas e pesquisas que realizamos.
           </p>
         </div>
       </motion.section>
@@ -312,8 +336,7 @@ function App() {
           <div className="info-wrapper">
             <h2 className="titulo-equipe">Math Quest</h2>
             <p className="texto-animado texto-delay-1">
-              Embarque nessa aventura cheia de monstros, montanhas e
-              matemática!
+              Embarque nessa aventura cheia de monstros, montanhas e matemática!
             </p>
             <a href="/MathQuest.zip" download className="download-btn">
               Baixar Agora
@@ -387,9 +410,7 @@ function App() {
           <p className="footer-title">Entre em contato</p>
           <p className="footer-email">
             <img src={gmail} alt="Email" className="email-icon" />
-            <a href="mailto:quatiarchive@email.com">
-              quatiarchive@gmail.com
-            </a>
+            <a href="mailto:quatiarchive@email.com">quatiarchive@gmail.com</a>
           </p>
         </div>
         <div className="footer-social">

@@ -5,7 +5,12 @@ import "./Carrossel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Carrossel({ itens = [], mostrarThumbs = true, clicavel = true, carrosselTipo = "padrao" }) {
+function Carrossel({
+  itens = [],
+  mostrarThumbs = true,
+  clicavel = true,
+  carrosselTipo = "padrao",
+}) {
   const [selecionado, setSelecionado] = useState(null);
 
   const settings = {
@@ -18,7 +23,9 @@ function Carrossel({ itens = [], mostrarThumbs = true, clicavel = true, carrosse
       );
     },
     dots: true,
-    dotsClass: mostrarThumbs ? "slick-dots slick-thumb" : "slick-dots slick-default",
+    dotsClass: mostrarThumbs
+      ? "slick-dots slick-thumb"
+      : "slick-dots slick-default",
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -45,7 +52,7 @@ function Carrossel({ itens = [], mostrarThumbs = true, clicavel = true, carrosse
               className="equipe-img"
             />
             <div className="equipe-info">
-              <h3 className="subtitulo span" >{item.nome}</h3>
+              <h3 className="subtitulo span">{item.nome}</h3>
               <p className="descricao">{item.descricao}</p>
               <p className="texto-animado">{item.info}</p>
             </div>
@@ -76,7 +83,11 @@ function Carrossel({ itens = [], mostrarThumbs = true, clicavel = true, carrosse
   };
 
   return (
-    <div className={carrosselTipo === "equipe" ? "slider-wrapper-equipe" : "slider-wrapper"}>
+    <div
+      className={
+        carrosselTipo === "equipe" ? "slider-wrapper-equipe" : "slider-wrapper"
+      }
+    >
       <Slider {...settings}>
         {itens.map((item, index) => renderSlide(item, index))}
       </Slider>
