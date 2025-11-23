@@ -15,9 +15,17 @@ import imgThais from "./assets/imgThais.jpg";
 import imgLynn from "./assets/imgLynn.jpg";
 import imgGm from "./assets/imgGm.jpg";
 import imgHigor from "./assets/imgHigor.jpg";
+import imgDownload1 from "./assets/img1.jpg";
+import imgDownload2 from "./assets/img2.jpg";
+import imgDownload3 from "./assets/img3.jpg";
 import img1 from "./assets/valor1.jpg";
 import img2 from "./assets/valor2.jpg";
 import img3 from "./assets/valor3.jpg";
+import logo from "./assets/logo.png";
+import miniLogo from "./assets/minilogo.png";
+import miniLogoEscura from "./assets/8luedark.png";
+import gmail from "./assets/gmail.png";
+import insta from "./assets/insta.png";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -37,6 +45,16 @@ function App() {
     const timer = setTimeout(() => setLoading(false), 1800);
     return () => clearTimeout(timer);
   }, []);
+
+  // animação padrão para cada seção
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
 
   // ---------- EQUIPE ----------
   const equipe = [
@@ -103,11 +121,7 @@ function App() {
   ];
 
   // ---------- DOWNLOAD ----------
-  const imagensDownload = [
-    { imagem: img1 },
-    { imagem: img2 },
-    { imagem: img3 },
-  ];
+  const imagensDownload = [{ imagem: imgDownload1 }, { imagem: imgDownload2 }, { imagem: imgDownload3 }];
 
   // ---------- VALORES ----------
   const valores = [
@@ -149,7 +163,11 @@ function App() {
       {/* NAVBAR */}
       <nav className="navbar">
         <div className="nav-left">
-          <img src="/8luedark.png" alt="Logo pequeno" className="footer-logo" />
+          <img
+            src={miniLogoEscura}
+            alt="Logo pequeno"
+            className="footer-logo"
+          />
         </div>
         <div className="nav-links">
           <button onClick={() => scrollToSection("inicio")}>Inicio</button>
@@ -161,65 +179,65 @@ function App() {
       </nav>
 
       {/* INÍCIO */}
-      <section
+      <motion.section
         id="inicio"
-        className="inicio-section"
+        className="inicio-section fullpage-section"
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",
-          height: "80vh",
           margin: 0,
           paddingTop: "100px",
           background: "#A7B2B3",
+          rotateX,
+          scale,
         }}
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
       >
         <img
           style={{ height: 400 }}
-          src="/logo.png"
+          src={logo}
           alt="Math Quest Logo"
           className="logo-mathquest"
         />
-      </section>
+      </motion.section>
+
+      {/* DIVISOR */}
+      <div className="divider" />
 
       {/* SOBRE */}
       <motion.section
         id="sobre"
         ref={sobreRef}
-        className="sobre-section"
+        className="sobre-section fullpage-section"
         style={{
           background: "white",
           padding: "40px 20px",
-          rotateX: rotateX,
+          rotateX,
           scale,
         }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7 }}
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
       >
         <div
           className="sobre-content hover-sobre"
           style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}
         >
-          <h2
-            className="titulo-com-linha"
-            style={{ animation: "fadeInUp 0.8s ease forwards", opacity: 0 }}
-          >
-            Sobre o Math Quest
-          </h2>
+          <h2 className="titulo-com-linha">Sobre o Math Quest</h2>
           <p className="texto-animado texto-delay-1">
-            O{" "}
-            <strong className="texto-animado texto-delay-2">
-              Math Quest
-            </strong>{" "}
-            é muito mais do que um jogo — é uma jornada interativa onde a
-            matemática se encontra com a aventura.
+            O <strong>Math Quest</strong> é muito mais do que um jogo — é uma
+            jornada interativa onde a matemática se encontra com a aventura.
           </p>
           <p className="fade-text delay-2">
             Através de <strong>missões épicas</strong>,{" "}
             <strong>personagens carismáticos</strong> e{" "}
-            <strong>problemas matemáticos</strong> que exigem raciocínio lógico...
+            <strong>problemas matemáticos</strong> que exigem raciocínio
+            lógico...
           </p>
           <p className="fade-text delay-3">
             Criado por uma equipe apaixonada por educação e tecnologia...
@@ -227,31 +245,23 @@ function App() {
         </div>
       </motion.section>
 
-      {/* DIVISOR */}
-      <div
-        style={{
-          height: "2px",
-          background:
-            "linear-gradient(to right, transparent, #ccc, transparent)",
-          width: "90%",
-          margin: "0 auto",
-        }}
-      ></div>
+      <div className="divider" />
 
       {/* EQUIPE */}
       <motion.section
         id="equipe"
         ref={equipeRef}
+        className="fullpage-section"
         style={{
           background: "#D9D9D9",
           padding: "40px 20px",
-          rotateX: rotateX,
+          rotateX,
           scale,
         }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7 }}
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
       >
         <div
           className="carrossel-equipe"
@@ -263,12 +273,7 @@ function App() {
             padding: "40px",
           }}
         >
-          <h2
-            className="titulo-com-linha"
-            style={{ animation: "fadeInUp 0.8s ease forwards", opacity: 0 }}
-          >
-            Nossa Equipe
-          </h2>
+          <h2 className="titulo-com-linha">Nossa Equipe</h2>
           <Carrossel
             itens={equipe}
             mostrarThumbs={true}
@@ -277,32 +282,23 @@ function App() {
         </div>
       </motion.section>
 
-      {/* DIVISOR */}
-      <div
-        style={{
-          height: "2px",
-          background:
-            "linear-gradient(to right, transparent, #ccc, transparent)",
-          width: "90%",
-          margin: "0 auto",
-        }}
-      ></div>
+      <div className="divider" />
 
       {/* DOWNLOAD */}
       <motion.section
         id="download"
         ref={downloadRef}
-        className="download-container"
+        className="download-container fullpage-section"
         style={{
           background: "#EBEBEB",
           padding: "40px 20px",
-          rotateX: rotateX,
+          rotateX,
           scale,
         }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7 }}
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
       >
         <div className="download-card">
           <div className="carousel-wrapper">
@@ -314,14 +310,10 @@ function App() {
             />
           </div>
           <div className="info-wrapper">
-            <h2
-              className="titulo-equipe"
-              style={{ animation: "fadeInUp 0.8s ease forwards", opacity: 0 }}
-            >
-              Math Quest
-            </h2>
+            <h2 className="titulo-equipe">Math Quest</h2>
             <p className="texto-animado texto-delay-1">
-              Embarque nessa aventura cheia de monstros, montanhas e matemática!
+              Embarque nessa aventura cheia de monstros, montanhas e
+              matemática!
             </p>
             <a href="/MathQuest.zip" download className="download-btn">
               Baixar Agora
@@ -330,32 +322,23 @@ function App() {
         </div>
       </motion.section>
 
-      {/* DIVISOR ANTES DOS VALORES */}
-      <div
-        style={{
-          height: "2px",
-          background:
-            "linear-gradient(to right, transparent, #ccc, transparent)",
-          width: "90%",
-          margin: "0 auto",
-        }}
-      ></div>
+      <div className="divider" />
 
       {/* VALORES */}
       <motion.section
         id="valores"
-        className="valores-section"
+        className="valores-section fullpage-section"
         style={{
           background: "#050816",
           padding: "40px 20px 60px",
-          rotateX: rotateX,
+          rotateX,
           scale,
           color: "#fff",
         }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7 }}
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
       >
         <div
           style={{
@@ -366,8 +349,6 @@ function App() {
           <h2
             className="titulo-com-linha"
             style={{
-              animation: "fadeInUp 0.8s ease forwards",
-              opacity: 0,
               color: "#fff",
               marginBottom: "28px",
             }}
@@ -405,7 +386,7 @@ function App() {
         <div className="footer-text">
           <p className="footer-title">Entre em contato</p>
           <p className="footer-email">
-            <img src="/gmail.png" alt="Email" className="email-icon" />
+            <img src={gmail} alt="Email" className="email-icon" />
             <a href="mailto:quatiarchive@email.com">
               quatiarchive@gmail.com
             </a>
@@ -413,21 +394,14 @@ function App() {
         </div>
         <div className="footer-social">
           <a
-            href="https://instagram.com/seuPerfil"
+            href="https://instagram.com/projeto_mathquest"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/insta.png" alt="Instagram" className="insta-icon" />
-          </a>
-          <a
-            href="https://linkedin.com/in/seuPerfil"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/linkedin.png" alt="LinkedIn" className="insta-icon" />
+            <img src={insta} alt="Instagram" className="insta-icon" />
           </a>
         </div>
-        <img src="/logo.png" alt="Logo pequeno" className="footer-logo" />
+        <img src={miniLogo} alt="Logo pequeno" className="footer-logo" />
       </footer>
     </div>
   );
