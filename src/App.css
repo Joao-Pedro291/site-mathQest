@@ -662,3 +662,27 @@ button:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* dá uma sensação de “encaixe” quando passa de uma seção pra outra */
+.page-container {
+  scroll-snap-type: y proximity;
+}
+
+/* aplica o snap em cada bloco principal */
+.fullpage-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+}
+
+/* só deixa o divisor padrão bonitinho */
+.divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ccc, transparent);
+  width: 90%;
+  margin: 0 auto;
+}
