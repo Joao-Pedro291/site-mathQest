@@ -15,9 +15,9 @@ import imgThais from "./assets/imgThais.jpg";
 import imgLynn from "./assets/imgLynn.jpg";
 import imgGm from "./assets/imgGm.jpg";
 import imgHigor from "./assets/imgHigor.jpg";
-import img1 from "./assets/img1.jpg";
-import img2 from "./assets/img2.jpg";
-import img3 from "./assets/img3.jpg";
+import img1 from "./assets/valor1.jpg";
+import img2 from "./assets/valor2.jpg";
+import img3 from "./assets/valor3.jpg";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -110,7 +110,6 @@ function App() {
   ];
 
   // ---------- VALORES ----------
-  // usando img1/img2/img3 como fundo; se tiver outras imagens é só trocar aqui
   const valores = [
     {
       id: 1,
@@ -386,82 +385,14 @@ function App() {
             }}
           >
             {valores.map((valor) => (
-              <div
-                key={valor.id}
-                className="valor-card"
-                style={{
-                  position: "relative",
-                  borderRadius: "24px",
-                  overflow: "hidden",
-                  width: "100%",
-                  maxWidth: "280px",
-                  height: "260px",
-                  boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
-                  background: "#111827",
-                  display: "flex",
-                  alignItems: "flex-end",
-                  cursor: "pointer",
-                }}
-              >
-                {/* background image */}
+              <div key={valor.id} className="valor-card">
                 <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    backgroundImage: `url(${valor.imagem})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    filter: "brightness(0.7)",
-                    transform: "scale(1.03)",
-                    transition: "transform 0.2s ease-out, filter 0.2s ease-out",
-                  }}
                   className="valor-card-bg"
+                  style={{ backgroundImage: `url(${valor.imagem})` }}
                 />
-                {/* overlay */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(to top, rgba(15,23,42,0.95), rgba(15,23,42,0.8), rgba(15,23,42,0.2), transparent)",
-                  }}
-                />
-                {/* conteúdo */}
-                <div
-                  style={{
-                    position: "relative",
-                    padding: "18px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "14px",
-                    zIndex: 1,
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "13px",
-                      lineHeight: 1.4,
-                      color: "#E5E7EB",
-                    }}
-                  >
-                    {valor.descricao}
-                  </p>
-                  <button
-                    style={{
-                      alignSelf: "flex-start",
-                      borderRadius: "999px",
-                      padding: "8px 18px",
-                      border: "none",
-                      background: "#2563EB",
-                      color: "#fff",
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      boxShadow: "0 8px 18px rgba(0,0,0,0.45)",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {valor.titulo}
-                  </button>
+                <div className="valor-overlay">
+                  <p className="valor-texto">{valor.descricao}</p>
+                  <button className="valor-pill">{valor.titulo}</button>
                 </div>
               </div>
             ))}
