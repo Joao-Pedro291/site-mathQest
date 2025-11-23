@@ -38,6 +38,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // ---------- EQUIPE ----------
   const equipe = [
     {
       imagem: imgAllix,
@@ -101,12 +102,40 @@ function App() {
     },
   ];
 
+  // ---------- DOWNLOAD ----------
   const imagensDownload = [
     { imagem: img1 },
     { imagem: img2 },
     { imagem: img3 },
   ];
 
+  // ---------- VALORES ----------
+  // usando img1/img2/img3 como fundo; se tiver outras imagens é só trocar aqui
+  const valores = [
+    {
+      id: 1,
+      titulo: "Educação",
+      descricao:
+        "O Math Quest busca aproximar a educação de matemática nas escolas e reduzir o déficit no ensino dessa matéria no Brasil, por meio de recursos digitais e gamificados.",
+      imagem: img1,
+    },
+    {
+      id: 2,
+      titulo: "Gamificação",
+      descricao:
+        "Por meio de elementos históricos, cenários e personagens que fazem referência a contextos matemáticos, tornamos a matéria mais lúdica, envolvente e descomplicada.",
+      imagem: img2,
+    },
+    {
+      id: 3,
+      titulo: "Criatividade",
+      descricao:
+        "Entregamos histórias, missões e artes originais. Valorizamos propostas criativas e a individualidade de cada integrante no desenvolvimento do projeto.",
+      imagem: img3,
+    },
+  ];
+
+  // ---------- SCROLL ----------
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) section.scrollIntoView({ behavior: "smooth" });
@@ -118,18 +147,21 @@ function App() {
     <div className="page-container">
       <ParticlesBackground />
 
+      {/* NAVBAR */}
       <nav className="navbar">
         <div className="nav-left">
           <img src="/8luedark.png" alt="Logo pequeno" className="footer-logo" />
         </div>
         <div className="nav-links">
-          <button onClick={() => scrollToSection("inicio")}>Início</button>
+          <button onClick={() => scrollToSection("inicio")}>Inicio</button>
           <button onClick={() => scrollToSection("sobre")}>Sobre</button>
           <button onClick={() => scrollToSection("equipe")}>Equipe</button>
           <button onClick={() => scrollToSection("download")}>Download</button>
+          <button onClick={() => scrollToSection("valores")}>Valores</button>
         </div>
       </nav>
 
+      {/* INÍCIO */}
       <section
         id="inicio"
         className="inicio-section"
@@ -140,7 +172,7 @@ function App() {
           height: "80vh",
           margin: 0,
           paddingTop: "100px",
-          background: "#e0f3ff",
+          background: "#A7B2B3",
         }}
       >
         <img
@@ -151,12 +183,13 @@ function App() {
         />
       </section>
 
+      {/* SOBRE */}
       <motion.section
         id="sobre"
         ref={sobreRef}
         className="sobre-section"
         style={{
-          background: "#e0f3ff",
+          background: "white",
           padding: "40px 20px",
           rotateX: rotateX,
           scale,
@@ -178,15 +211,16 @@ function App() {
           </h2>
           <p className="texto-animado texto-delay-1">
             O{" "}
-            <strong className="texto-animado texto-delay-2">Math Quest</strong>{" "}
+            <strong className="texto-animado texto-delay-2">
+              Math Quest
+            </strong>{" "}
             é muito mais do que um jogo — é uma jornada interativa onde a
             matemática se encontra com a aventura.
           </p>
           <p className="fade-text delay-2">
             Através de <strong>missões épicas</strong>,{" "}
             <strong>personagens carismáticos</strong> e{" "}
-            <strong>problemas matemáticos</strong> que exigem raciocínio
-            lógico...
+            <strong>problemas matemáticos</strong> que exigem raciocínio lógico...
           </p>
           <p className="fade-text delay-3">
             Criado por uma equipe apaixonada por educação e tecnologia...
@@ -194,6 +228,7 @@ function App() {
         </div>
       </motion.section>
 
+      {/* DIVISOR */}
       <div
         style={{
           height: "2px",
@@ -204,11 +239,12 @@ function App() {
         }}
       ></div>
 
+      {/* EQUIPE */}
       <motion.section
         id="equipe"
         ref={equipeRef}
         style={{
-          background: "#e0f3ff",
+          background: "#D9D9D9",
           padding: "40px 20px",
           rotateX: rotateX,
           scale,
@@ -242,6 +278,7 @@ function App() {
         </div>
       </motion.section>
 
+      {/* DIVISOR */}
       <div
         style={{
           height: "2px",
@@ -252,12 +289,13 @@ function App() {
         }}
       ></div>
 
+      {/* DOWNLOAD */}
       <motion.section
         id="download"
         ref={downloadRef}
         className="download-container"
         style={{
-          background: "#e0f3ff",
+          background: "#EBEBEB",
           padding: "40px 20px",
           rotateX: rotateX,
           scale,
@@ -293,12 +331,153 @@ function App() {
         </div>
       </motion.section>
 
+      {/* DIVISOR ANTES DOS VALORES */}
+      <div
+        style={{
+          height: "2px",
+          background:
+            "linear-gradient(to right, transparent, #ccc, transparent)",
+          width: "90%",
+          margin: "0 auto",
+        }}
+      ></div>
+
+      {/* VALORES */}
+      <motion.section
+        id="valores"
+        className="valores-section"
+        style={{
+          background: "#050816",
+          padding: "40px 20px 60px",
+          rotateX: rotateX,
+          scale,
+          color: "#fff",
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7 }}
+      >
+        <div
+          style={{
+            maxWidth: "1100px",
+            margin: "0 auto",
+          }}
+        >
+          <h2
+            className="titulo-com-linha"
+            style={{
+              animation: "fadeInUp 0.8s ease forwards",
+              opacity: 0,
+              color: "#fff",
+              marginBottom: "28px",
+            }}
+          >
+            Nossos valores
+          </h2>
+
+          <div
+            className="valores-cards"
+            style={{
+              display: "flex",
+              gap: "24px",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {valores.map((valor) => (
+              <div
+                key={valor.id}
+                className="valor-card"
+                style={{
+                  position: "relative",
+                  borderRadius: "24px",
+                  overflow: "hidden",
+                  width: "100%",
+                  maxWidth: "280px",
+                  height: "260px",
+                  boxShadow: "0 18px 40px rgba(0,0,0,0.45)",
+                  background: "#111827",
+                  display: "flex",
+                  alignItems: "flex-end",
+                  cursor: "pointer",
+                }}
+              >
+                {/* background image */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    backgroundImage: `url(${valor.imagem})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    filter: "brightness(0.7)",
+                    transform: "scale(1.03)",
+                    transition: "transform 0.2s ease-out, filter 0.2s ease-out",
+                  }}
+                  className="valor-card-bg"
+                />
+                {/* overlay */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(to top, rgba(15,23,42,0.95), rgba(15,23,42,0.8), rgba(15,23,42,0.2), transparent)",
+                  }}
+                />
+                {/* conteúdo */}
+                <div
+                  style={{
+                    position: "relative",
+                    padding: "18px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "14px",
+                    zIndex: 1,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      lineHeight: 1.4,
+                      color: "#E5E7EB",
+                    }}
+                  >
+                    {valor.descricao}
+                  </p>
+                  <button
+                    style={{
+                      alignSelf: "flex-start",
+                      borderRadius: "999px",
+                      padding: "8px 18px",
+                      border: "none",
+                      background: "#2563EB",
+                      color: "#fff",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      boxShadow: "0 8px 18px rgba(0,0,0,0.45)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {valor.titulo}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* FOOTER */}
       <footer className="rodape">
         <div className="footer-text">
           <p className="footer-title">Entre em contato</p>
           <p className="footer-email">
             <img src="/gmail.png" alt="Email" className="email-icon" />
-            <a href="mailto:quatiarchive@email.com">quatiarchive@gmail.com</a>
+            <a href="mailto:quatiarchive@email.com">
+              quatiarchive@gmail.com
+            </a>
           </p>
         </div>
         <div className="footer-social">

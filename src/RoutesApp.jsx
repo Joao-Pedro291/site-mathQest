@@ -5,6 +5,7 @@ import Download from "./pages/Download";
 import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 import PaginaDownloads from "./pages/PaginaDownloads";
+import ValuePages from "./pages/ValuePages";
 
 function RoutesApp() {
   return (
@@ -15,6 +16,7 @@ function RoutesApp() {
         <Route path="sobre" element={<Sobre />} />
         <Route path="contato" element={<Contato />} />
         <Route path="/downloads-lista" element={<PaginaDownloads />} />
+        <Route path="valores" element={<ValuePages />} />
       </Route>
     </Routes>
   );
