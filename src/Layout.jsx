@@ -32,6 +32,7 @@ function Layout() {
               <button onClick={() => navigate("/")}>Início</button>
               <button onClick={() => navigate("/download")}>Download</button>
               <button onClick={() => navigate("/sobre")}>Sobre Nós</button>
+              <button onClick={() => navigate("/valores")}>Valores</button>
               <button onClick={scrollParaContato}>Contato</button>
             </nav>
           </div>
