@@ -18,6 +18,8 @@ import imgHigor from "./assets/imgHigor.jpg";
 import img1 from "./assets/valor1.jpg";
 import img2 from "./assets/valor2.jpg";
 import img3 from "./assets/valor3.jpg";
+import logo from "./assets/logo.png";
+import miniLogo from "./assets/minilogo.png";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -176,7 +178,7 @@ function App() {
       >
         <img
           style={{ height: 400 }}
-          src="/logo.png"
+          src={logo}
           alt="Math Quest Logo"
           className="logo-mathquest"
         />
@@ -210,16 +212,15 @@ function App() {
           </h2>
           <p className="texto-animado texto-delay-1">
             O{" "}
-            <strong className="texto-animado texto-delay-2">
-              Math Quest
-            </strong>{" "}
+            <strong className="texto-animado texto-delay-2">Math Quest</strong>{" "}
             é muito mais do que um jogo — é uma jornada interativa onde a
             matemática se encontra com a aventura.
           </p>
           <p className="fade-text delay-2">
             Através de <strong>missões épicas</strong>,{" "}
             <strong>personagens carismáticos</strong> e{" "}
-            <strong>problemas matemáticos</strong> que exigem raciocínio lógico...
+            <strong>problemas matemáticos</strong> que exigem raciocínio
+            lógico...
           </p>
           <p className="fade-text delay-3">
             Criado por uma equipe apaixonada por educação e tecnologia...
@@ -406,9 +407,7 @@ function App() {
           <p className="footer-title">Entre em contato</p>
           <p className="footer-email">
             <img src="/gmail.png" alt="Email" className="email-icon" />
-            <a href="mailto:quatiarchive@email.com">
-              quatiarchive@gmail.com
-            </a>
+            <a href="mailto:quatiarchive@email.com">quatiarchive@gmail.com</a>
           </p>
         </div>
         <div className="footer-social">
@@ -427,7 +426,7 @@ function App() {
             <img src="/linkedin.png" alt="LinkedIn" className="insta-icon" />
           </a>
         </div>
-        <img src="/logo.png" alt="Logo pequeno" className="footer-logo" />
+        <img src={miniLogo} alt="Logo pequeno" className="footer-logo" />
       </footer>
     </div>
   );
